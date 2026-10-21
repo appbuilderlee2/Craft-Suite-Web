@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16736b">
+  <meta name="description" content="13 個 Craft 創作工具，一個網頁入口。文件、圖像、影音，在瀏覽器開始創作。">
+  <title>Craft Suite Web · 你的創作工具箱</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./"><img src="./icon.svg" width="32" height="32" alt="">Craft Suite Web</a><a href="https://github.com/appbuilderlee2/Craft-Suite-Web" target="_blank" rel="noopener noreferrer">GitHub</a></header>
+  <main>
+    <section class="intro" aria-labelledby="title"><h1 id="title">你的創作工具箱</h1><p>13 個創作工具，一個入口。</p>
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">搜尋應用程式</span><input id="search" type="search" placeholder="搜尋應用程式、用途…" autocomplete="off"></label>
+      <nav class="filters" aria-label="工具分類"><button type="button" data-category="all" aria-pressed="true">全部</button><button type="button" data-category="office" aria-pressed="false">文件辦公</button><button type="button" data-category="design" aria-pressed="false">圖像設計</button><button type="button" data-category="media" aria-pressed="false">影音創作</button></nav>
+    </section>
+    <p id="status" role="status">正在讀取工具清單…</p>
+    <section id="apps" class="grid" aria-label="創作工具"></section>
+    <p id="empty" hidden>搵唔到符合嘅工具。試試其他名稱或分類。</p>
+    <noscript>請開啟 JavaScript 以使用工具清單及 WebAssembly App。</noscript>
+    <details class="help"><summary>使用須知、更新與資料備份</summary><div>
+      <p>這是非官方工具入口。每個 App 使用官方 Web 發行版本；入口為繁體中文，App 內的語言及功能由原作者提供。首次開啟可能要下載數十 MB，手機介面、瀏覽器及影音格式支援因 App 而異，建議桌面瀏覽器使用。</p>
+      <p>App 在新分頁開啟，入口會保留。檔案請透過 App 的儲存／匯出功能下載備份；瀏覽器暫存並非永久備份，亦不會自動同步到其他裝置。不同 App 及同帳戶其他 GitHub Pages 網站共享儲存來源，子目錄並非安全隔離。</p>
+      <p>網站沒有加入上傳服務或分析追蹤，但各官方 App 的外部連線及功能須以該 App 為準。即時協作、AI 等依賴外部服務的功能不由這個靜態入口提供。</p>
+      <p>每日自動檢查官方正式 Release；更新通過下載驗證及檢查後才部署。正在編輯時請先匯出文件，再重新開啟新版。新頁面不會強制重載你正在使用的 App。</p>
+      <p><a href="./versions.json" target="_blank" rel="noopener">版本及驗證記錄</a> · <a href="https://github.com/appbuilderlee2/Craft-Suite-Web/actions/workflows/deploy.yml" target="_blank" rel="noopener">更新／部署紀錄</a> · <a href="./ATTRIBUTION.md">授權與來源</a></p>
+    </div></details>
+  </main>
+  <footer>非官方入口 · 檔案請定期匯出備份<span id="build-info"></span></footer>
+</body>
+</html>

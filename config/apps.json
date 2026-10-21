@@ -1,0 +1,15 @@
+[
+  {"id":"pdfcraft","name":"PdfCraft","label":"PDF 文件","description":"閱讀、整理、合併及保護 PDF。","category":"office","mark":"P","color":"#ee5948","pin":null},
+  {"id":"wordcraft","name":"WordCraft","label":"文書處理","description":"撰寫文字，編排你的文件。","category":"office","mark":"W","color":"#316ddd","pin":null},
+  {"id":"deckcraft","name":"DeckCraft","label":"簡報製作","description":"整理想法，製作簡報與投影片。","category":"office","mark":"D","color":"#ef792b","pin":null},
+  {"id":"gridcraft","name":"GridCraft","label":"試算表","description":"用試算表整理數據與計算。","category":"office","mark":"G","color":"#439856","pin":null},
+  {"id":"photocraft","name":"PhotoCraft","label":"圖像編輯","description":"編輯圖像、圖層與遮罩。","category":"design","mark":"Ph","color":"#db3987","pin":null},
+  {"id":"lightcraft","name":"LightCraft","label":"相片與 RAW","description":"管理相片，調整光線與色彩。","category":"design","mark":"L","color":"#bd8800","pin":null},
+  {"id":"vectorcraft","name":"VectorCraft","label":"向量繪圖","description":"繪製向量圖案與插畫。","category":"design","mark":"V","color":"#7048d6","pin":null},
+  {"id":"designcraft","name":"DesignCraft","label":"版面設計","description":"編排頁面、刊物與出版作品。","category":"design","mark":"De","color":"#078c98","pin":null},
+  {"id":"figcraft","name":"FigCraft","label":"介面與原型","description":"設計介面，構思互動原型。","category":"design","mark":"F","color":"#a362d6","pin":null},
+  {"id":"filmcraft","name":"FilmCraft","label":"影片剪輯","description":"剪輯影片，整理畫面與聲音。","category":"media","mark":"Fi","color":"#1683d5","pin":null},
+  {"id":"effectcraft","name":"EffectCraft","label":"動畫與特效","description":"製作動態圖像與視覺效果。","category":"media","mark":"Ef","color":"#c67a00","pin":null},
+  {"id":"soundcraft","name":"SoundCraft","label":"音訊編輯","description":"錄製、編輯與處理聲音。","category":"media","mark":"So","color":"#5145d7","pin":null},
+  {"id":"cadcraft","name":"CADCraft","label":"CAD 製圖","description":"電腦輔助設計與精確製圖。","category":"design","mark":"C","color":"#617b8d","pin":null}
+]
