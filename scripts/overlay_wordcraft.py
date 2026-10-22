@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FORK_COMMIT = "d52cf9737a441e9b04259932d9703199a10922a5"
+FORK_COMMIT = "698d6fa3216a896ed19f2360ab24f3b93c5d1d64"
 
 def overlay(source, dist=None):
     source = Path(source).resolve()
