@@ -92,6 +92,9 @@ jobs:
       - name: Integrate Chinese patched PdfCraft
         if: steps.changed.outputs.publish == 'true'
         run: python scripts/overlay_pdfcraft.py /tmp/craft-pdfcraft/dist/web
+      - name: Apply crash and reload diagnostics to all 13 apps
+        if: steps.changed.outputs.publish == 'true'
+        run: python scripts/inject_stability.py
       - name: Save reproducible version list
         if: steps.changed.outputs.publish == 'true'
         uses: actions/upload-artifact@v4
