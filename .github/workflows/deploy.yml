@@ -64,7 +64,7 @@ jobs:
           curl --fail --location --retry 3 --silent --show-error \
             https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf \
             -o /tmp/craft-fonts/fonts/noto-sans-cjk-tc/NotoSansCJKtc-Regular.otf
-          printf '%s\\n' 'Noto Sans CJK TC | Regular | fonts/noto-sans-cjk-tc/NotoSansCJKtc-Regular.otf | Hant,Latn | OFL-1.1' >> /tmp/craft-fonts/fonts/manifest.txt
+          echo 'Noto Sans CJK TC | Regular | fonts/noto-sans-cjk-tc/NotoSansCJKtc-Regular.otf | Hant,Latn | OFL-1.1' >> /tmp/craft-fonts/fonts/manifest.txt
           rustup target add wasm32-unknown-unknown
           cargo install trunk --locked
           cd /tmp/craft-wordcraft/apps/wordcraft-web
