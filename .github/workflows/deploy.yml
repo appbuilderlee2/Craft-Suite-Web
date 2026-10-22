@@ -75,6 +75,23 @@ jobs:
       - name: Integrate patched WordCraft into 13-app site
         if: steps.changed.outputs.publish == 'true'
         run: python scripts/overlay_wordcraft.py /tmp/craft-wordcraft/dist/web
+      - name: Build PdfCraft with licensed Traditional Chinese fallback
+        if: steps.changed.outputs.publish == 'true'
+        run: |
+          PDF_TAG=$(python -c 'import json; print(next(a["tag"] for a in json.load(open("release-lock.json"))["apps"] if a["id"]=="pdfcraft"))')
+          git clone --filter=blob:none https://github.com/storytold/pdfcraft.git /tmp/craft-pdfcraft
+          git -C /tmp/craft-pdfcraft checkout "$PDF_TAG"
+          python scripts/patch_pdfcraft.py /tmp/craft-pdfcraft
+          mkdir -p /tmp/pdfcraft-fonts/fonts/lxgw-wenkai
+          curl --fail --location --retry 3 --silent --show-error \
+            https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKai-Regular.ttf \
+            -o /tmp/pdfcraft-fonts/fonts/lxgw-wenkai/LXGWWenKai-Regular.ttf
+          echo 'LXGW WenKai | Regular | fonts/lxgw-wenkai/LXGWWenKai-Regular.ttf | Hans,Hant,Latn | OFL-1.1' > /tmp/pdfcraft-fonts/fonts/manifest.txt
+          cd /tmp/craft-pdfcraft/apps/pdfcraft-web
+          CRAFT_FONTS_DIR=/tmp/pdfcraft-fonts CRAFT_FONTS_REQUIRED=1 trunk build --release
+      - name: Integrate Chinese patched PdfCraft
+        if: steps.changed.outputs.publish == 'true'
+        run: python scripts/overlay_pdfcraft.py /tmp/craft-pdfcraft/dist/web
       - name: Save reproducible version list
         if: steps.changed.outputs.publish == 'true'
         uses: actions/upload-artifact@v4
