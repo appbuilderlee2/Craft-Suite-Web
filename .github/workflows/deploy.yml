@@ -22,7 +22,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 65
     outputs:
       publish: ${{ steps.changed.outputs.publish }}
     steps:
@@ -54,6 +54,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/build.py --locked
+      - name: Build patched WordCraft with Traditional Chinese fonts
+        if: steps.changed.outputs.publish == 'true'
+        run: |
+          git clone https://github.com/appbuilderlee2/wordcraft-web.git /tmp/craft-wordcraft
+          git -C /tmp/craft-wordcraft checkout d52cf9737a441e9b04259932d9703199a10922a5
+          git clone --depth 1 https://github.com/storytold/craft-fonts.git /tmp/craft-fonts
+          mkdir -p /tmp/craft-fonts/fonts/noto-sans-cjk-tc
+          curl --fail --location --retry 3 --silent --show-error \
+            https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf \
+            -o /tmp/craft-fonts/fonts/noto-sans-cjk-tc/NotoSansCJKtc-Regular.otf
+          printf '%s\\n' 'Noto Sans CJK TC | Regular | fonts/noto-sans-cjk-tc/NotoSansCJKtc-Regular.otf | Hant,Latn | OFL-1.1' >> /tmp/craft-fonts/fonts/manifest.txt
+          rustup target add wasm32-unknown-unknown
+          cargo install trunk --locked
+          cd /tmp/craft-wordcraft/apps/wordcraft-web
+          CRAFT_FONTS_DIR=/tmp/craft-fonts CRAFT_FONTS_REQUIRED=1 trunk build --release
+          cd /tmp/craft-wordcraft
+          python -m pip install pillow
+          python scripts/prepare_web.py
+      - name: Integrate patched WordCraft into 13-app site
+        if: steps.changed.outputs.publish == 'true'
+        run: python scripts/overlay_wordcraft.py /tmp/craft-wordcraft/dist/web
       - name: Save reproducible version list
         if: steps.changed.outputs.publish == 'true'
         uses: actions/upload-artifact@v4
