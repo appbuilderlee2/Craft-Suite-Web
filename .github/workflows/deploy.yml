@@ -58,7 +58,7 @@ jobs:
         if: steps.changed.outputs.publish == 'true'
         run: |
           git clone https://github.com/appbuilderlee2/wordcraft-web.git /tmp/craft-wordcraft
-          git -C /tmp/craft-wordcraft checkout d52cf9737a441e9b04259932d9703199a10922a5
+          git -C /tmp/craft-wordcraft checkout 698d6fa3216a896ed19f2360ab24f3b93c5d1d64
           git clone --depth 1 https://github.com/storytold/craft-fonts.git /tmp/craft-fonts
           mkdir -p /tmp/craft-fonts/fonts/noto-sans-cjk-tc
           curl --fail --location --retry 3 --silent --show-error \
