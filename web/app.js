@@ -22,7 +22,7 @@ function render() {
     main.append(mark, copy);
     const launch = element('a', 'launch', app.path ? '開啟 App' : '尚未部署');
     if (app.path && /^apps\/[a-z]+\/v?[0-9][a-zA-Z0-9._-]*\/$/.test(app.path)) {
-      launch.href = `./${app.path}`; launch.target = '_blank'; launch.rel = 'noopener noreferrer';
+      launch.href = `./${app.path}${app.id === 'wordcraft' && /^((?!chrome|chromium|crios|fxios).)*safari/i.test(navigator.userAgent) ? '?webgl' : ''}`; launch.target = '_blank'; launch.rel = 'noopener noreferrer';
       launch.setAttribute('aria-label', `開啟 ${app.name}（新分頁）`);
     } else { launch.setAttribute('aria-disabled', 'true'); }
     card.append(main, launch); return card;
